@@ -18,9 +18,14 @@ Today, over 100 countries operate sovereign PKI hierarchies for digital signatur
 
 `did:pki` solves this by:
 
-1. **Assigning a stable DID** to every CA in a national PKI hierarchy, derived deterministically from the certificate's Subject Distinguished Name and country code;
-2. **Resolving to a DID Document** containing the CA's public keys in standard JWK format, its position in the trust chain, and metadata about the PKI hierarchy;
-3. **Enabling programmatic verification** of any signature issued under any national PKI by any W3C-compliant DID resolver — without country-specific code, without bundling root certificates, and without manual trust decisions.
+> [!NOTE]
+> **`did:pki` solves this by:**
+>
+> 1. **Assigning a stable DID** to every CA in a national PKI hierarchy, derived deterministically from the certificate's Subject Distinguished Name and country code;
+>
+> 2. **Resolving to a DID Document** containing the CA's public keys in standard JWK format, its position in the trust chain, and metadata about the PKI hierarchy;
+>
+> 3. **Enabling programmatic verification** of any signature issued under any national PKI by any W3C-compliant DID resolver — without country-specific code, without bundling root certificates, and without manual trust decisions.
 
 The method is **read-only by design**. `did:pki` DIDs are not created, updated, or deactivated by their subjects (CAs). They are derived deterministically from existing X.509 certificates and resolved against a trust registry that mirrors authoritative national PKI publications. The DID lifecycle follows the underlying certificate lifecycle — when a CA certificate expires or is revoked, the corresponding DID Document reflects this state.
 
