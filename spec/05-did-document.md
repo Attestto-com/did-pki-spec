@@ -29,7 +29,7 @@ A `did:pki` DID Document represents a Certificate Authority within a national PK
         "n": "...",
         "e": "AQAB",
         "alg": "RS256",
-        "x5t#S256": "b04839cecfc73d5fb0db8da4d0613d690f604cb7"
+        "x5t": "b04839cecfc73d5fb0db8da4d0613d690f604cb7"
       }
     },
     {
@@ -41,7 +41,7 @@ A `did:pki` DID Document represents a Certificate Authority within a national PK
         "n": "...",
         "e": "AQAB",
         "alg": "RS256",
-        "x5t#S256": "d1dfd32ba8977afcc7976e9a36ef5289faddf122"
+        "x5t": "d1dfd32ba8977afcc7976e9a36ef5289faddf122"
       }
     }
   ],
@@ -90,7 +90,8 @@ A `did:pki` DID Document represents a Certificate Authority within a national PK
         "notBefore": "2023-01-15T00:00:00Z",
         "notAfter": "2031-01-15T23:59:59Z",
         "serialNumber": "4e00000002738de677fe8e6840000000000002",
-        "sha256Fingerprint": "b04839cecfc73d5fb0db8da4d0613d690f604cb7",
+        "fingerprint": "b04839cecfc73d5fb0db8da4d0613d690f604cb7",
+        "fingerprintAlgorithm": "sha-1",
         "status": "active"
       },
       {
@@ -98,7 +99,8 @@ A `did:pki` DID Document represents a Certificate Authority within a national PK
         "notBefore": "2026-02-01T00:00:00Z",
         "notAfter": "2034-02-01T23:59:59Z",
         "serialNumber": "4e00000006e605fb3f791d077f000000000006",
-        "sha256Fingerprint": "d1dfd32ba8977afcc7976e9a36ef5289faddf122",
+        "fingerprint": "d1dfd32ba8977afcc7976e9a36ef5289faddf122",
+        "fingerprintAlgorithm": "sha-1",
         "status": "active"
       }
     ]
@@ -127,7 +129,7 @@ A `did:pki` DID Document represents a Certificate Authority within a national PK
         "n": "...",
         "e": "AQAB",
         "alg": "RS256",
-        "x5t#S256": "68a24d2b2cb5c4ce9fe300e3b6fcd1dfeeb9c311"
+        "x5t": "68a24d2b2cb5c4ce9fe300e3b6fcd1dfeeb9c311"
       }
     }
   ],
@@ -152,7 +154,8 @@ A `did:pki` DID Document represents a Certificate Authority within a national PK
         "notBefore": "2015-02-24T00:00:00Z",
         "notAfter": "2039-02-24T23:59:59Z",
         "serialNumber": "74b8cf638fab72bc46c1d2bacd00050c",
-        "sha256Fingerprint": "68a24d2b2cb5c4ce9fe300e3b6fcd1dfeeb9c311",
+        "fingerprint": "68a24d2b2cb5c4ce9fe300e3b6fcd1dfeeb9c311",
+        "fingerprintAlgorithm": "sha-1",
         "status": "active"
       }
     ]
@@ -200,7 +203,7 @@ The `endEntityHints` property provides **machine-readable parsing instructions**
 |-------|------|-------------|
 | `nationalIdField` | string | X.509 field containing the signer's national ID (e.g., `serialNumber`, `UID`) |
 | `nationalIdFormat` | string | Format identifier (e.g., `CR-cedula`, `BR-cpf`, `ES-dni`, `CO-cc`) |
-| `nationalIdPattern` | string | Regex pattern for validation (e.g., `^[0-9]-[0-9]{4}-[0-9]{4}$` for CR cédula) |
+| `nationalIdPattern` | string | Regex pattern for validation (e.g., `^[0-9]{9,12}$` for CR cédula as stored in X.509 serialNumber) |
 | `nameField` | string | Field containing the signer's name (e.g., `CN`, `GN+SN`) |
 | `organizationField` | string | Field containing the signer's organization, if applicable |
 | `professionalIdField` | string | Field containing professional credentials (e.g., colegiado number in `OU`) |
@@ -245,5 +248,6 @@ Each generation represents a CA certificate with a specific validity period:
 | `notBefore` | datetime | Certificate validity start (ISO 8601) |
 | `notAfter` | datetime | Certificate validity end (ISO 8601) |
 | `serialNumber` | string | X.509 serial number (hex) |
-| `sha256Fingerprint` | string | SHA-256 hash of DER-encoded certificate |
+| `fingerprint` | string | Hex-encoded hash of DER-encoded certificate. SHA-256 RECOMMENDED; SHA-1 acceptable when the national PKI publishes only SHA-1 thumbprints. The `fingerprintAlgorithm` field indicates which was used. |
+| `fingerprintAlgorithm` | string | `sha-256` or `sha-1` (defaults to `sha-256` if omitted) |
 | `status` | enum | `active`, `expired`, `revoked` |

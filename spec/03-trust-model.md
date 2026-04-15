@@ -54,12 +54,12 @@ A `did:pki` resolver is a service that mirrors national PKI publications and ser
 
 ### Resolver Integrity Verification
 
-Each DID Document MUST include a `proof` section containing the SHA-256 fingerprint of the original X.509 certificate. This allows a verifier to independently confirm the mapping:
+Each DID Document MUST include a `fingerprint` field in `pkiMetadata.generations[]` containing the hash of the original X.509 certificate (SHA-256 recommended; SHA-1 acceptable when the national PKI publishes only SHA-1 thumbprints). This allows a verifier to independently confirm the mapping:
 
 1. Resolve `did:pki:cr:sinpe:persona-fisica` from any resolver
-2. Extract the `x509CertificateSha256` from the proof
-3. Download the original certificate from BCCR's official repository
-4. Compare fingerprints
+2. Extract the `fingerprint` and `fingerprintAlgorithm` from `pkiMetadata.generations[]`
+3. Download the original certificate from the national PKI's official repository
+4. Compute the hash using the specified algorithm and compare
 
 If the fingerprints match, the resolver's representation is faithful. If they don't, the resolver is compromised or stale. This verification is optional but RECOMMENDED for high-assurance scenarios.
 

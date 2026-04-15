@@ -10,7 +10,7 @@
 | **Status** | Draft |
 | **Method Name** | `pki` |
 | **Latest Editor's Draft** | [spec.attestto.com/did-pki](https://spec.attestto.com/did-pki) |
-| **Conforms To** | [W3C DID Core v1.1](https://www.w3.org/TR/did-core/) |
+| **Conforms To** | [W3C DID Core v1.0](https://www.w3.org/TR/did-core/) |
 | **Editor** | [Attestto](https://attestto.org) |
 | **Author** | Eduardo Chongkan ([eduardo@attestto.com](mailto:eduardo@attestto.com)) |
 | **Repository** | [github.com/Attestto-com/did-extensions](https://github.com/Attestto-com/did-extensions) |
@@ -76,6 +76,6 @@ Country trust stores are the primary contribution opportunity. To add a country:
 1. Obtain the country's CA certificates from official government PKI publications
 2. Derive `did:pki` identifiers using the derivation algorithm (Section 7)
 3. Create DID Documents following the schema (Section 5)
-4. Submit a pull request to the `attestto-trust` repository
+4. Submit the trust store to any `did:pki` resolver operator, or operate your own resolver
 
 See [Contributing Guidelines](CONTRIBUTING.md) for details.

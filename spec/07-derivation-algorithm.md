@@ -144,6 +144,6 @@ Step 5: did:pki:es:fnmt:raiz
 
 ## Determinism Guarantee
 
-Two independent implementations processing the same X.509 certificate MUST produce the same `did:pki` identifier. To verify conformance, implementers SHOULD test against the reference test vectors published at `spec.attestto.com/did-pki/test-vectors/`.
+Two independent implementations processing the same X.509 certificate MUST produce the same `did:pki` identifier. To verify conformance, implementers SHOULD test against the reference test vectors published in the `test-vectors/` directory of the specification repository.
 
-The test vector set includes certificates from at least 10 countries with varied Subject DN formats, character sets, and hierarchy depths.
+The test vector set will include certificates from at least 10 countries with varied Subject DN formats, character sets, and hierarchy depths.

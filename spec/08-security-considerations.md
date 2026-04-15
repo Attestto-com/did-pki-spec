@@ -6,10 +6,10 @@ A `did:pki` resolver is a mirror of national PKI publications — it does not cr
 
 ### Certificate Fingerprint Verification
 
-Every DID Document includes the `sha256Fingerprint` of the original X.509 certificate in `pkiMetadata.generations[].sha256Fingerprint`. A verifier can independently:
+Every DID Document includes the `fingerprint` of the original X.509 certificate in `pkiMetadata.generations[].fingerprint`, along with a `fingerprintAlgorithm` field indicating the hash algorithm used (SHA-256 recommended; SHA-1 acceptable when the national PKI publishes only SHA-1 thumbprints). A verifier can independently:
 
 1. Download the CA certificate from the national PKI's official repository;
-2. Compute the SHA-256 hash of the DER-encoded certificate;
+2. Compute the hash using the algorithm specified in `fingerprintAlgorithm`;
 3. Compare with the fingerprint in the DID Document.
 
 If they match, the resolver's representation is faithful. This check is RECOMMENDED for high-assurance scenarios (financial transactions, legal documents, government processes).

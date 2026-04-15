@@ -97,7 +97,7 @@ did:pki:us:fpki:sha256-medium-assurance
 There is no fixed limit on path depth. The path follows the actual hierarchy of the national PKI:
 
 - 1 segment: Root CA (`did:pki:cr:raiz-nacional`)
-- 2 segments: Policy/intermediate CA (`did:pki:cr:sinpe:persona-fisica`)
+- 2 segments: Issuing CA (`did:pki:cr:sinpe:persona-fisica`)
 - 3+ segments: Deeper hierarchies where they exist (`did:pki:br:icp:serpro:rfb`)
 
 ## Generation Disambiguation

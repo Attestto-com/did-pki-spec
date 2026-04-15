@@ -20,15 +20,15 @@ A law firm in Panama receives a notarized document from Costa Rica. The document
 
 ### UC-2: Foreign Bidder Verification in Public Procurement
 
-A Colombian company bids on a Costa Rican government tender via SICOP. The tender requires digital signatures. The Colombian company's certificate was issued by Certicámara (Colombia's CA). Costa Rica's SICOP system resolves `did:pki:co:certicamara` to verify the Colombian signature — without requiring the company to obtain a BCCR certificate.
+A Colombian company bids on a Costa Rican government tender via SICOP. The tender requires digital signatures. The Colombian company's certificate was issued by Certicámara (Colombia's CA). Costa Rica's SICOP system resolves `did:pki:co:certicamara:raiz` to verify the Colombian signature — without requiring the company to obtain a BCCR certificate.
 
 ### UC-3: Professional Credential Verification
 
-A Costa Rican engineer (CFIA-certified) applies for a position at a multinational firm in the EU. Their professional credential is a Verifiable Credential issued by the Colegio Federado, signed under the BCCR PKI. The EU employer's HR system resolves the issuing CA's DID and verifies the credential chain — no country-specific integration needed.
+A Costa Rican engineer (CFIA-certified) applies for a position at a multinational firm in the EU. Their professional certification document is digitally signed using a BCCR Firma Digital certificate. The EU employer's HR system extracts the signer's certificate from the document, resolves the issuing CA's `did:pki` DID, obtains the CA's public key, and validates the certificate chain — no country-specific integration needed.
 
 ### UC-4: eIDAS Cross-Recognition
 
-An EU Qualified Trust Service Provider (QTSP) issues a qualified electronic signature. A Costa Rican institution receives a document signed by this QTSP. Instead of establishing a bilateral recognition agreement, the institution resolves `did:pki:eu:qtsp:docusign-france` and verifies the chain against the EU Trusted List — through the same DID resolution protocol used for domestic signatures.
+An EU Qualified Trust Service Provider (QTSP) issues a qualified electronic signature. A Costa Rican institution receives a document signed by this QTSP. Instead of establishing a bilateral recognition agreement, the institution resolves `did:pki:eu:fr:docusign` and verifies the chain against the EU Trusted List — through the same DID resolution protocol used for domestic signatures.
 
 ### UC-5: Multi-Country Supply Chain
 

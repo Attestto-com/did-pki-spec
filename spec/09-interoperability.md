@@ -106,19 +106,19 @@ This eliminates the need to maintain local trust stores for each jurisdiction �
 | Argentina | AC Raíz de la Rep. Argentina | ONTI | `did:pki:ar:onti:raiz` |
 | Panama | Dirección de Firma Electrónica | — | `did:pki:pa:{ca-name}` |
 
-Each country's trust store can be contributed to the `did:pki` resolver network as an open-source community contribution.
+Each country's trust store can be contributed to any `did:pki` resolver as an open-source community contribution.
 
 ## Universal Resolver
 
-The `did:pki` Universal Resolver driver resolves any `did:pki` DID by querying configured resolver endpoints. The reference driver is published as an open-source package and can be deployed alongside the existing `did:sns` resolver.
+The `did:pki` Universal Resolver driver resolves any `did:pki` DID by querying configured resolver endpoints. Any party can operate a resolver — the driver is not tied to any specific provider.
 
 Configuration:
 ```json
 {
   "driver": "did-pki",
   "resolvers": [
-    "https://trust.attestto.com/did-pki/",
-    "https://pki-resolver.example.com/"
+    "https://pki-resolver.example.com/",
+    "https://another-resolver.example.org/"
   ],
   "fallbackToDirectCRL": true
 }
