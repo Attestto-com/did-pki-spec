@@ -106,7 +106,7 @@ This eliminates the need to maintain local trust stores for each jurisdiction �
 | Argentina | AC Raíz de la Rep. Argentina | ONTI | `did:pki:ar:onti:raiz` |
 | Panama | Dirección de Firma Electrónica | — | `did:pki:pa:{ca-name}` |
 
-Each country's trust store can be contributed as a module to the `did:pki` resolver network — following the same pattern as OS spec bounties in the Attestto ecosystem.
+Each country's trust store can be contributed to the `did:pki` resolver network as an open-source community contribution.
 
 ## Universal Resolver
 
