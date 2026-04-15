@@ -52,6 +52,21 @@ did:pki:mx:sat:raiz                      → Mexico SAT Root CA
 10. [Privacy Considerations](spec/10-privacy-considerations.md) — No PII, resolution privacy, GDPR compliance
 11. [References](spec/11-references.md) — W3C, IETF, ETSI, eIDAS, national PKI authorities
 
+## Motivation: Existing Approaches
+
+Over 100 countries operate sovereign PKI hierarchies, but no universal protocol exists for cross-border CA resolution. Current approaches each carry structural limitations:
+
+| Approach | Mechanism | Limitation |
+|----------|-----------|------------|
+| **Bilateral trust agreements** | Countries sign mutual recognition treaties and exchange Trusted Lists (e.g., eIDAS in the EU) | Requires diplomatic negotiation per country pair; does not scale beyond regional blocs |
+| **Vendor trust programs** | A private company curates a global trust list embedded in their software (e.g., Adobe AATL, browser root programs) | Creates dependency on a single vendor's inclusion criteria; breaks technological neutrality |
+| **Bridge CAs** | A central bridge authority cross-signs participating country CAs (e.g., US Federal Bridge) | Single point of failure and political control; expelled countries lose interoperability |
+| **Generic DID methods** (`did:web`, `did:tdw`) | CAs publish DID Documents at well-known URLs on their own domains | Ties identity to DNS infrastructure; if the domain changes or goes offline, the DID becomes unresolvable |
+
+`did:pki` takes a different approach: **deterministic derivation from the certificate itself**. No registration, no agreements, no vendor dependency, no DNS reliance. If a government CA certificate exists, it already has a `did:pki` identifier — any conformant resolver will derive the same DID and return the same public key.
+
+See [§1 Abstract](spec/01-abstract.md) and [§9 Interoperability](spec/09-interoperability.md) for detailed analysis.
+
 ## Key Properties
 
 | Property | Value |
