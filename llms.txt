@@ -1,0 +1,64 @@
+# did:pki Method Specification
+
+> W3C DID method that bridges national PKI hierarchies to the decentralized identity ecosystem via deterministic X.509-to-DID derivation.
+
+Part of the [Attestto Open](https://attestto.org) ecosystem.
+
+## What it is
+
+`did:pki` is a **read-only** DID method. It assigns globally resolvable W3C Decentralized Identifiers to Certificate Authorities within national PKI hierarchies. No registration required -- if a government CA certificate exists, it already has a `did:pki` identifier.
+
+This is a specification document, not an npm package. The reference implementation is [`@attestto/did-pki-resolver`](https://github.com/Attestto-com/did-pki-resolver).
+
+## Key properties
+
+- **Read-only** -- DIDs are derived from existing X.509 certificates, not registered.
+- **Deterministic** -- Same certificate produces the same DID in any conformant implementation.
+- **Multi-registry** -- Any party can operate a resolver; no central authority.
+- **No PII** -- Only CA organizational identity, never personal data.
+- **Bridge, don't replace** -- National PKIs continue operating unchanged.
+
+## DID examples
+
+```
+did:pki:cr:raiz-nacional             -- Costa Rica Root CA
+did:pki:cr:sinpe:persona-fisica      -- Costa Rica BCCR issuing CA (citizens)
+did:pki:es:fnmt:raiz                 -- Spain FNMT Root CA
+did:pki:br:icp:raiz                  -- Brazil ICP-Brasil Root CA
+did:pki:eu:de:d-trust               -- Germany D-Trust (EU QTSP)
+did:pki:us:fpki:common-policy       -- US Federal PKI Common Policy CA
+```
+
+## Specification sections
+
+```
+spec/
+  01-abstract.md               -- Problem statement, design principles
+  02-focal-use-case.md         -- 6 cross-border scenarios, 10 requirements
+  03-trust-model.md            -- National PKI anchors, EU Trusted Lists, multi-registry
+  04-did-syntax.md             -- ABNF grammar, construction rules
+  05-did-document.md           -- JSON examples, pkiMetadata extension
+  06-crud-operations.md        -- Read-only method, resolution algorithm
+  07-derivation-algorithm.md   -- Deterministic X.509 -> DID conversion, normalization
+  08-security-considerations.md
+  09-interoperability.md       -- ETSI AdES, EU LOTL, eIDAS 2.0, GLEIF vLEI, ISO 18013-5
+  10-privacy-considerations.md
+  11-references.md
+```
+
+Also includes `test-vectors/` for implementer conformance testing.
+
+## Related packages
+
+- [`@attestto/did-pki-resolver`](https://github.com/Attestto-com/did-pki-resolver) -- Reference resolver (npm package)
+- [`attestto-did-resolver`](https://github.com/Attestto-com/attestto-did-resolver) -- Unified HTTP resolver service (did:pki + did:sns)
+- [`attestto-trust`](https://github.com/Attestto-com/attestto-trust) -- Multi-country PKI trust store (data source for resolvers)
+
+## Standards conformance
+
+- [W3C DID Core v1.0](https://www.w3.org/TR/did-core/)
+- W3C DID Extensions Registry
+
+## License
+
+Apache-2.0
